@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Ascorium Library</title>
@@ -15,6 +16,19 @@
     <li><a href="#images">Images</a></li>
     <li><a href="#help">Help</a></li>
   </ul>
+  <table border="1">
+    <tr><th>Name</th><th>Universe Number</th><th>Universe Description</th></tr>
+    {% for UE in universe %}
+    <tr>
+      
+      <td>{{UE.Name}}</td>
+      <td>{{UE.UniverseNumber}}</td>
+      <td>{{UE.UniverseDescription}}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">No data found</td></tr>
+  {% endfor %}
+  </table>
 </body>
 
 </html>
