@@ -1,36 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-  {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <title>Ascorium Library</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<h1 style="text-align:center">Welcome to the Ascorium Library</h1>
-<ul>
-    <li><a class="active" href="{% url 'home' %}">Home</a></li>
-    <li><a href="#characters">Character Profiles</a></li>
-    <li><a href="#tales">Tales</a></li>
-    <li><a href="#Universes">Universes</a></li>
-    <li><a href="#images">Images</a></li>
-    <li><a href="#help">Help</a></li>
-  </ul>
-  <table border="1">
-    <tr><th>Name</th><th>Universe Number</th><th>Universe Description</th></tr>
-    {% for UE in universe %}
-    <tr>
-      
-      <td>{{UE.Name}}</td>
-      <td>{{UE.UniverseNumber}}</td>
-      <td>{{UE.UniverseDescription}}</td>
-      <button name="UPDATE">UPDATE</button>
-      <button name="UPDATE">DELETE</button>
-    </tr>
-    {% empty %}
-    <tr><td colspan="3">No data found</td></tr>
-  {% endfor %}
-  </table>
-</body>
 
-</html>
+{% extends "base.html" %}
+
+{% block title %}Welcome to the Ascorium Library{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light jumbotron">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Welcome to the Ascorium Library</h1>
+    <p class="col-md-8 fs-4">Find and read about your favorite characters from the Ascorium</p>
+  </div>
+</div>
+
+<table border="1">
+  <tr><th>Name</th><th>Universe Number</th><th>Universe Description</th></tr>
+  {% for UE in universe %}
+  <tr>
+    
+    <td>{{UE.Name}}</td>
+    <td>{{UE.UniverseNumber}}</td>
+    <td>{{UE.UniverseDescription}}</td>
+    <button name="UPDATE">UPDATE</button>
+    <button name="UPDATE">DELETE</button>
+  </tr>
+  {% empty %}
+  <tr><td colspan="3">No data found</td></tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+
