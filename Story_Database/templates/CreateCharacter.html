@@ -1,3 +1,17 @@
 
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Create a New Character</h2>
+    
+    <form method="post">
+        {% csrf_token %} <!--csrf token for security-->
+        {{ form|crispy }}  <!--the form for create character, with crispy bootstrap applied-->
+        <button type="submit" class="btn btn-success">Create Character</button> <!--button to attempt to create character-->
+        <a href="{% url 'CharacterArticles' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to create a character-->
+    </form>
+</div>
+{% endblock %}

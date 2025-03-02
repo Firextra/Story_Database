@@ -1,3 +1,40 @@
-
 {% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Universe Chapters</h1>
+    {% if user.is_authenticated %}  <!--checks if user is logged in, if so then show button to create a new Chapter-->
+    <a href="{% url 'CreateChapter' %}" class="btn btn-primary mb-3">Create a Chapter</a>
+    {% endif %}
+    {% for universe, chapters in ChapterDictionary.items %} <!--Goes through dictionary and goes through chapters and is organized within a dictionary with related universe-->
+    <h2>Universe {{ universe.UniverseNumber|stringformat:"03d" }} - {{ universe.Name }}</h2> <!--produce the UniverseNumber, stringformat:"03d" ensures the value is 3 digit long-->
+    <ul>
+        {% for chapter in chapters %}   <!--go through each chapter in chapters-->
+            <li>
+                <a href="{% url 'ChapterPage' chapter.id %}">{{ chapter.Name }}</a> <!--go to chapter page with chapter.id being passed on to urls.py-->
+            </li>
+        {% empty %}
+            <p>No chapters have yet to be created for this Universe, will you be the first to add a new event?</p>  <!--if no entries-->
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h1 class="mb-4">Character Tales</h1>
+    {% if user.is_authenticated %}  <!--checks if user is logged in, if so then show button to create a new Tale-->
+    <a href="{% url 'CreateTale' %}" class="btn btn-primary mb-3">Create a Tale</a>
+    {% endif %}
+    {% for character, tales in TaleDictionary.items %} <!--Goes through dictionary and goes through tales associated to each character and organises it-->
+    <h4>{{ character.Name }} </h4> <!--character name associated-->
+    <ul>
+        {% for tale in tales %}   <!--go through each tale in tales-->
+            <li>
+                <a href="{% url 'TalePage' tale.id %}">{{ tale.Name }}</a> <!--go to tale page with tale.id being passed on to urls.py-->
+            </li>
+        {% empty %}
+            <p>No tale have yet to be created for this Character, will you be the first to create a story for them</p>  <!--if no entries-->
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}
 

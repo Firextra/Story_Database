@@ -6,12 +6,12 @@
 Login
 {%endblock %}
 
-
+<!--login html-->
 {% block content %}
     <form method="post" class="form-group">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class = "btn btn-success">Login</button>
-        <p>Don't have an account? Create one <a href="/register">here</a></p>
+        <button type="submit" class = "btn btn-success">Login</button> <!--login button-->
+        <p>Don't have an account? Create one <a href="/register">here</a></p> <!--Option for user to register account-->
     </form>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Create a New Chapter</h2>
+    
+    <form method="post">
+        {% csrf_token %} <!--csrf token for security-->
+        {{ form|crispy }}  <!--the form for create chapter, with crispy bootstrap applied-->
+        <button type="submit" class="btn btn-success">Create Chapter</button> <!--button to attempt to create chapter-->
+        <a href="{% url 'TalesAndChapters' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to create a chapter-->
+    </form>
+</div>
+{% endblock %}

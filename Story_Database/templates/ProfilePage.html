@@ -1,3 +1,36 @@
 
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm border-light rounded">
+                <div class="card-body text-center">
+                    <img class="rounded-circle account-img mb-3" src="{{user.profile.image.url}}" alt="Profile Picture" width="150" height="150"> <!--image for profile picture, profile is an extension of user-->
+    
+                    <h2 class="account-heading mb-2">{{user.username}}</h2> <!--here is the user info being displayed-->
+                    <p class="text-secondary mb-3">{{user.profile.role}}</p>
+                    
+                    <form method="post" action="{% url 'logout' %}"> <!--logout form with a button to logout the user-->
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-block">Log out</button>
+                    </form>
+
+                    {% if user.is_staff %} <!--If the user is staff, show the mod page button-->
+                    <a href="{% url 'ModPage' %}">
+                        <button type="button" class="btn btn-danger btn-block mt-3">Mod Page</button>
+                    </a>
+                    {% else %} <!--if the user isnt staff, they can delete their account willingly through the profile screen (staff can still delete it through admin)-->
+                    <form method="post" action="{% url 'DeleteAccountConfirm' %}"> 
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-block mt-3">Delete Account</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

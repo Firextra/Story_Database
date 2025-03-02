@@ -1,31 +1,44 @@
 
 {% extends "base.html" %}
 
-{% block title %}Welcome to the Ascorium Library{% endblock %}
+{% block title %}Welcome to the Ascorium Library{% endblock %} <!--home page-->
 
 {% block content %}
+
 <div class="p-5 mb-4 bg-light jumbotron">
   <div class="container">
-    <h1 class="display-5 fw-bold">Welcome to the Ascorium Library</h1>
+    <h1 class="display-5 fw-bold">Welcome to the Ascorium Library</h1> <!--basic home page to welcome the user and point of the website-->
     <p class="col-md-8 fs-4">Find and read about your favorite characters from the Ascorium</p>
   </div>
 </div>
 
-<table border="1">
-  <tr><th>Name</th><th>Universe Number</th><th>Universe Description</th></tr>
-  {% for UE in universe %}
-  <tr>
-    
-    <td>{{UE.Name}}</td>
-    <td>{{UE.UniverseNumber}}</td>
-    <td>{{UE.UniverseDescription}}</td>
-    <button name="UPDATE">UPDATE</button>
-    <button name="UPDATE">DELETE</button>
-  </tr>
-  {% empty %}
-  <tr><td colspan="3">No data found</td></tr>
-{% endfor %}
-</table>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Random Character</h1>  <!--random character article on the home page-->
+      <h2 class="card-title">{{ Character.Name }}</h2>    <!--use context Character from view for model, and fetches the data from the character, with name and other attributes-->
+      <h5 class="text-muted">Author: {{ Character.Author }}</h5> <!--text-muted from bootstrap added for better style-->
+      <h5 class="text-muted">Universe: {{ Character.UniverseNumber.Name }} ({{ Character.UniverseNumber.UniverseNumber|stringformat:"03d" }})</h5> <!--Use the UniverseNumber foreign key to fetch Universe information for the character and use stringformat:"03d" to ensure its 3 digits atleast-->
+      <p class="mt-3">{{ Character.CharacterDescription }}</p> <!--put in the character's description-->
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Random Tale</h1> <!--random tale article on the home page-->
+        <h2 class="card-title">{{ Tale.Name }}</h2>    <!--use tale from view, and fetches the data with name and other attributes-->
+        <h5 class="text-muted">Author: {{ Tale.Author }}</h5> <!--text-muted from bootstrap added for better style-->
+        <p class="mt-3">{{ Tale.Tale }}</p> <!--the actual tale itself-->
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title">Random Chapter</h1>   <!--random chapter article on the home page-->
+          <h2 class="card-title">{{ Chapter.Name }}</h2>    <!--name of chapter-->
+          <h5 class="text-muted">Author: {{ Chapter.Author }}</h5> <!--text-muted from bootstrap added for better style-->
+          <h5 class="text-muted">Universe: {{ Chapter.UniverseNumber.Name }} ({{ Chapter.UniverseNumber.UniverseNumber|stringformat:"03d" }})</h5> <!--universe with the universe number of the chapter-->
+          <p class="mt-3">{{ Chapter.Chapter }}</p>
+      </div>
+
+
 
 {% endblock %}
 
