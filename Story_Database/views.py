@@ -108,7 +108,7 @@ def UniverseArticles(request):
        return render(request, "UniverseArticles.html", context) #render the html file and send the context
 
 def UniversePage(request, UniverseNumber): #take in CharacterID
-       Universe=get_object_or_404(UniverseDatabase, universe=Universe.id) #get_object_or_404 attempts to retrieve object if fails show http 404 error, the character looked for is in CharacterID
+       Universe=get_object_or_404(UniverseDatabase, UniverseNumber=UniverseNumber) #get_object_or_404 attempts to retrieve object if fails show http 404 error, the character looked for is in CharacterID
        User = request.user.username #fetch username of person to check if individual is author in the html
        context = {"Universe":Universe, "User":User} #create context for character for html
        return render(request, "UniversePage.html", context) 
