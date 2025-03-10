@@ -28,6 +28,7 @@ def TalesAndChapters(request):
 def ProfilePage(request):
        return render(request, "ProfilePage.html")
 
+@login_required
 def ModPage(request):
        return render(request)
 
@@ -70,12 +71,15 @@ def CharacterArticles(request):
        context = {"CharacterDictionary":CharacterDictionary} #create context for teh dictionary for html file
        return render(request, "CharacterArticles.html", context) #render the html file and send the context
 
+
+
 def CharacterPage(request, CharacterID): #take in CharacterID
        Character=get_object_or_404(CharacterDatabase, id=CharacterID) #get_object_or_404 attempts to retrieve object if fails show http 404 error, the character looked for is in CharacterID
        User = request.user.username #fetch username of person to check if individual is author in the html
        context = {"Character":Character, "User":User} #create context for character for html
        return render(request, "CharacterPage.html", context) 
 
+@login_required
 def CreateCharacter(request):
        if request.method == "POST": #Ensure that only those who got here used POST and not GOT since the button checks if the user is logged in and if bypassed via typing in url, this stops that
               form = CharacterForm(request.POST) #gets form characterForm from form.py and data with it
@@ -89,12 +93,14 @@ def CreateCharacter(request):
        
        return render(request, "CreateCharacter.html",  {"form":form}) #attempt to do it again as error occured
 
+@login_required
 def CharacterUpdate(request, CharacterID):
        Character = Character=get_object_or_404(CharacterDatabase, id=CharacterID)  #fetch the character
        if request.method == "POST":
               form = UpdateCharacterForm(request.POST, instance=Character)
               if form.is_valid():  #checks form valid
-                     form.save()    #saves form
+                     if request.user.username == Character.Author: #ensures that the person updating the article is the author
+                            form.save()    #saves form
                      return redirect("/CharacterArticles")
        else:
               form = UpdateCharacterForm(instance=Character)   #resets form for retry
@@ -107,12 +113,15 @@ def UniverseArticles(request):
        context = {"Universes":Universes} #create context for teh dictionary for html file
        return render(request, "UniverseArticles.html", context) #render the html file and send the context
 
+
+
 def UniversePage(request, UniverseNumber): #take in CharacterID
        Universe=get_object_or_404(UniverseDatabase, UniverseNumber=UniverseNumber) #get_object_or_404 attempts to retrieve object if fails show http 404 error, the character looked for is in CharacterID
        User = request.user.username #fetch username of person to check if individual is author in the html
        context = {"Universe":Universe, "User":User} #create context for character for html
        return render(request, "UniversePage.html", context) 
 
+@login_required
 def CreateUniverse(request):
        if request.method == "POST": #Ensure that only those who got here used POST and not GOT since the button checks if the user is logged in and if bypassed via typing in url, this stops that
               form = UniverseForm(request.POST) #gets form characterForm from form.py and data with it
@@ -126,12 +135,14 @@ def CreateUniverse(request):
        
        return render(request, "CreateUniverse.html",  {"form":form}) #attempt to do it again as error occured
 
+@login_required
 def UniverseUpdate(request, UniverseNumber):
        Universe = Universe=get_object_or_404(UniverseDatabase, UniverseNumber=UniverseNumber)  #find record that needs updating with the UniverseNumber
        if request.method == "POST":
               form = UpdateUniverseForm(request.POST, instance=Universe) #create a form and inserts the data from the record into the form using instance=
               if form.is_valid():
-                     form.save()
+                     if request.user.username == Universe.UniverseAuthor: #ensures that the person updating the article is the author
+                            form.save()
                      return redirect("/UniverseArticles/")
        else:
               form = UpdateUniverseForm(instance=Universe) #retry form with the records data in the fields 
@@ -161,6 +172,8 @@ def TalePage(request, TaleID): #take in TaleID
        context = {"Tale":Tale, "User":User} #create context for character for html
        return render(request, "TalePage.html", context) 
 
+
+@login_required
 def CreateTale(request):
        if request.method == "POST": #Ensure that only those who got here used POST and not GOT since the button checks if the user is logged in and if bypassed via typing in url, this stops that
               form = TaleForm(request.POST) #gets form TaleForm from form.py and data with it
@@ -174,13 +187,17 @@ def CreateTale(request):
        
        return render(request, "CreateTale.html",  {"form":form}) #attempt to do it again as error occured
 
+
+
+@login_required
 def TaleUpdate(request, TaleID):
        Tale = Tale=get_object_or_404(TalesDatabase, id=TaleID) #get the record needing update
        if request.method == "POST":
               form = UpdateTaleForm(request.POST, instance=Tale) #insert the information onto the form
               if form.is_valid():#form validation
-                     form.save() #save
-                     return redirect("/TalesAndChapters/")
+                     if request.user.username == Tale.Author: #ensures that the person updating the article is the author
+                            form.save() #save
+                     return redirect("/TalesAndChapters/") 
        else:
               form = UpdateTaleForm(instance=Tale) #redo form
        
@@ -192,6 +209,8 @@ def ChapterPage(request, ChapterID): #take in ChapterID
        context = {"Chapter":Chapter, "User":User} #create context for character for html
        return render(request, "ChapterPage.html", context) 
 
+
+@login_required
 def CreateChapter(request):
        if request.method == "POST": #Ensure that only those who got here used POST and not GOT since the button checks if the user is logged in and if bypassed via typing in url, this stops that
               form = ChapterForm(request.POST) #gets form ChapterForm from form.py and data with it
@@ -205,13 +224,17 @@ def CreateChapter(request):
        
        return render(request, "CreateChapter.html",  {"form":form}) #attempt to do it again as error occured
 
+@login_required
 def ChapterUpdate(request, ChapterID):
        Chapter = Chapter=get_object_or_404(ChaptersDatabase, id=ChapterID) #get the record using ChapterID from database
        if request.method == "POST":
               form = UpdateChapterForm(request.POST, instance=Chapter) #create form for html that has the data on the record on the form
               if form.is_valid(): #validation
-                     form.save() #save
+                     if request.user.username == Chapter.Author: #ensures that the person updating the article is the author
+                            form.save() #save
                      return redirect("/TalesAndChapters/")
+                     
+
        else:
               form = UpdateChapterForm(instance=Chapter) #redo form
        

@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <h1 class="mb-4">Universe Chapters</h1>
     {% if user.is_authenticated %}  <!--checks if user is logged in, if so then show button to create a new Chapter-->
-    <a href="{% url 'CreateChapter' %}" class="btn btn-primary mb-3">Create a Chapter</a>
+    <a href="{% url 'CreateChapter' %}" class="btn btn-primary mb-3 color-button-Submit">Create a Chapter</a>
     {% endif %}
     {% for universe, chapters in ChapterDictionary.items %} <!--Goes through dictionary and goes through chapters and is organized within a dictionary with related universe-->
     <h2>Universe {{ universe.UniverseNumber|stringformat:"03d" }} - {{ universe.Name }}</h2> <!--produce the UniverseNumber, stringformat:"03d" ensures the value is 3 digit long-->
@@ -21,7 +21,7 @@
 
     <h1 class="mb-4">Character Tales</h1>
     {% if user.is_authenticated %}  <!--checks if user is logged in, if so then show button to create a new Tale-->
-    <a href="{% url 'CreateTale' %}" class="btn btn-primary mb-3">Create a Tale</a>
+    <a href="{% url 'CreateTale' %}" class="btn btn-primary mb-3 color-button-Submit">Create a Tale</a>
     {% endif %}
     {% for character, tales in TaleDictionary.items %} <!--Goes through dictionary and goes through tales associated to each character and organises it-->
     <h4>{{ character.Name }} </h4> <!--character name associated-->

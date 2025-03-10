@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <h1 class="mb-4">Character Articles</h1>
     {% if user.is_authenticated %}  <!--checks if user is logged in, if so then show button to create a new character-->
-    <a href="{% url 'CreateCharacter' %}" class="btn btn-primary mb-3">Create New Character</a>
+    <a href="{% url 'CreateCharacter' %}" class="btn btn-primary mb-3 color-button-Submit">Create New Character</a>
     {% endif %}
     {% for universe, characters in CharacterDictionary.items %} <!--Goes through dictionary and goes through universe and characters within that universe-->
     <h2>Universe {{ universe.UniverseNumber|stringformat:"03d" }} - {{ universe.Name }}</h2> <!--produce the UniverseNumber and name at h2 with the characters within that universe at h1, stringformat:"03d" ensures the value is 3 digit long-->

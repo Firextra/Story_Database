@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <h1 class="mb-4">Universe Articles</h1>
     {% if user.is_authenticated %}  <!--checks if user is logged in, if so then show button to create a new Universe-->
-    <a href="{% url 'CreateUniverse' %}" class="btn btn-primary mb-3">Create a new Universe</a>
+    <a href="{% url 'CreateUniverse' %}" class="btn btn-primary mb-3 color-button-Submit">Create a new Universe</a>
     {% endif %}
 
     {% for universe in Universes %}   <!--go through each character in characters-->

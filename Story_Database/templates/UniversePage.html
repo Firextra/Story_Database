@@ -5,14 +5,14 @@
 <div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-body">
-            <h1 class="card-title">{{ Universe.Name }}</h1>    <!--use context Character from view for model, and fetches the data from the character database, with name and other attributes-->
-            <h5 class="text-muted">Author: {{ Universe.UniverseAuthor }}</h5> <!--text-muted from bootstrap added for better style-->
-            <h5 class="text-muted">Universe Number: {{ Universe.UniverseNumber|stringformat:"03d" }}</h5> <!--Use the UniverseNumber foreign key to fetch Universe information for the character and use stringformat:"03d" to ensure its 3 digits atleast-->
-            <p class="mt-3">{{ Universe.UniverseDescription }}</p>
+            <h1 class="card-title">{{ Universe.Name }}</h1>    <!--Get the universe name-->
+            <h5 class="text-muted">Author: {{ Universe.UniverseAuthor }}</h5> <!--Universe author-->
+            <h5 class="text-muted">Universe Number: {{ Universe.UniverseNumber|stringformat:"03d" }}</h5> <!--universe number-->
+            <p class="mt-3">{{ Universe.UniverseDescription }}</p> <!--universe description-->
 
-            <a href="{% url 'UniverseArticles' %}" class="btn btn-primary mt-3">Back to Universe List</a> <!--a go back button-->
+            <a href="{% url 'UniverseArticles' %}" class="btn btn-primary mt-3 color-button-Cancel">Back to Universe List</a> <!--a go back button-->
             {% if Universe.UniverseAuthor == User %}
-            <a href="{% url 'UniverseUpdate' Universe.UniverseNumber %}" class="btn btn-primary mt-3">Update Universe Article</a> <!--Allow the author to update their character-->
+            <a href="{% url 'UniverseUpdate' Universe.UniverseNumber %}" class="btn btn-primary mt-3 color-button-Submit">Update Universe Article</a> <!--Allow the author to update their Universe-->
             {% endif %}
         </div>
     </div>

@@ -9,8 +9,8 @@
     <form method="post">
         {% csrf_token %} <!--csrf token for security-->
         {{ form|crispy }}  <!--the form to update a Universe-->
-        <button type="submit" class="btn btn-success">Update Universe</button> <!---button to attempt to update Universe-->
-        <a href="{% url 'UniverseArticles' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to update a Universe-->
+        <button type="submit" class="btn btn-success color-button-Submit">Update Universe</button> <!---button to attempt to update Universe-->
+        <a href="{% url 'UniverseArticles' %}" class="btn btn-secondary color-button-Cancel">Cancel</a>  <!--a button to go back and cancel the attempt to update a Universe-->
     </form>
 </div>
 {% endblock %}

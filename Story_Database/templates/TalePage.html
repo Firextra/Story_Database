@@ -10,9 +10,9 @@
             <h5 class="text-muted">Universe: {{ Tale.Character.UniverseNumber.Name }} ({{ Tale.Character.UniverseNumber.UniverseNumber|stringformat:"03d" }})</h5> <!--show what universe the tale taekes place in as Tale has a foreign key to Character that has a foreign key to Universe-->
             <p class="mt-3">{{ Tale.Tale }}</p> <!--show the tale itself-->
 
-            <a href="{% url 'TalesAndChapters' %}" class="btn btn-primary mt-3">Back to Tales</a> <!--a go back button-->
+            <a href="{% url 'TalesAndChapters' %}" class="btn btn-primary mt-3 color-button-Cancel">Back to Tales</a> <!--a go back button-->
             {% if Tale.Author == User %}
-            <a href="{% url 'TaleUpdate' Tale.id %}" class="btn btn-primary mt-3">Edit Tale</a> <!--Allow the author to update their Tale-->
+            <a href="{% url 'TaleUpdate' Tale.id %}" class="btn btn-primary mt-3 color-button-Submit">Edit Tale</a> <!--Allow the author to update their Tale-->
             {% endif %}
         </div>
     </div>

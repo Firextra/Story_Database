@@ -8,9 +8,9 @@
     
     <form method="post">
         {% csrf_token %} <!--csrf token for security-->
-        {{ form|crispy }}  <!--the form for create character, with crispy bootstrap applied-->
-        <button type="submit" class="btn btn-success">Create Tale</button> <!--button to attempt to create character-->
-        <a href="{% url 'TalesAndChapters' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to create a character-->
+        {{ form|crispy }}  <!--the form for create tale, with crispy bootstrap applied-->
+        <button type="submit" class="btn btn-success">Create Tale</button> <!--button to attempt to create tale-->
+        <a href="{% url 'TalesAndChapters' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to create a tale-->
     </form>
 </div>
 {% endblock %}

@@ -1,0 +1,39 @@
+.CSSNavBar{
+    background-color: #70003B;
+
+}
+
+.CSSNavBar .navbar-brand, .CSSNavBar .nav-link {
+    color: #F0F3F3;
+}
+
+.CSSNavBar .nav-link:hover{
+    color: #e1e6e6;
+}
+
+.jumbotron{
+    background-color: #301B27;
+    color: #F0F3F3;
+}
+
+.navbar-nav{
+    display: flex;
+    width: 100%;
+}
+
+
+.color-button-Submit{
+    background-color: #c34d5f;
+}
+
+.color-button-Submit:hover{
+    background-color: #863340;
+}
+
+.color-button-Cancel{
+    background-color: #301B27;
+}
+
+.color-button-Cancel:hover{
+    background-color: #24141d;
+}

@@ -9,8 +9,8 @@
     <form method="post">
         {% csrf_token %} <!--csrf token for security-->
         {{ form|crispy }}  <!--the form to update a character-->
-        <button type="submit" class="btn btn-success">Update Tale</button> <!---button to attempt to update tale-->
-        <a href="{% url 'TalesAndChapters' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to update a tale-->
+        <button type="submit" class="btn btn-success color-button-Submit">Update Tale</button> <!---button to attempt to update tale-->
+        <a href="{% url 'TalesAndChapters' %}" class="btn btn-secondary color-button-Cancel">Cancel</a>  <!--a button to go back and cancel the attempt to update a tale-->
     </form>
 </div>
 {% endblock %}

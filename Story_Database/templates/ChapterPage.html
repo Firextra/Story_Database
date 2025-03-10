@@ -9,9 +9,9 @@
             <h5 class="text-muted">Universe: {{Chapter.UniverseNumber.Name }} ({{ Chapter.UniverseNumber.UniverseNumber|stringformat:"03d" }})</h5> <!--Use the UniverseNumber foreign key to fetch Universe information for the character and use stringformat:"03d" to ensure its 3 digits atleast-->
             <p class="mt-3">{{ Chapter.Chapter }}</p> <!--the chapter itself-->
 
-            <a href="{% url 'TalesAndChapters' %}" class="btn btn-primary mt-3">Back to Chapters</a> <!--a go back button-->
+            <a href="{% url 'TalesAndChapters' %}" class="btn btn-primary mt-3 color-button-Cancel">Back to Chapters</a> <!--a go back button-->
             {% if Chapter.Author == User %}
-            <a href="{% url 'ChapterUpdate' Chapter.id %}" class="btn btn-primary mt-3">Edit Chapter</a> <!--Allow the author to update their character-->
+            <a href="{% url 'ChapterUpdate' Chapter.id %}" class="btn btn-primary mt-3 color-button-Submit">Edit Chapter</a> <!--Allow the author to update their character-->
             {% endif %}
         </div>
     </div>

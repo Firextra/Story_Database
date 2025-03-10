@@ -9,9 +9,9 @@
     
     <form method="post">
         {% csrf_token %} <!--csrf token for security-->
-        {{ form|crispy }}  <!--the form for create character, with crispy bootstrap applied-->
-        <button type="submit" class="btn btn-success">Create Universe</button> <!--button to attempt to create character-->
-        <a href="{% url 'UniverseArticles' %}" class="btn btn-secondary">Cancel</a>  <!--a button to go back and cancel the attempt to create a character-->
+        {{ form|crispy }}  <!--the form for create Universe, with crispy bootstrap applied-->
+        <button type="submit" class="btn btn-success color-button-Submit">Create Universe</button> <!--button to attempt to create Universe-->
+        <a href="{% url 'UniverseArticles' %}" class="btn btn-secondary color-button-Cancel">Cancel</a>  <!--a button to go back and cancel the attempt to create a Universe-->
     </form>
 </div>
 {% endblock %}

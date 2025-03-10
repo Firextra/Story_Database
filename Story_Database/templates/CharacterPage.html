@@ -10,9 +10,9 @@
             <h5 class="text-muted">Universe: {{ Character.UniverseNumber.Name }} ({{ Character.UniverseNumber.UniverseNumber|stringformat:"03d" }})</h5> <!--Use the UniverseNumber foreign key to fetch Universe information for the character and use stringformat:"03d" to ensure its 3 digits atleast-->
             <p class="mt-3">{{ Character.CharacterDescription }}</p>
 
-            <a href="{% url 'CharacterArticles' %}" class="btn btn-primary mt-3">Back to Character List</a> <!--a go back button-->
+            <a href="{% url 'CharacterArticles' %}" class="btn btn-primary mt-3 color-button-Cancel">Back to Character List</a> <!--a go back button-->
             {% if Character.Author == User %}
-            <a href="{% url 'CharacterUpdate' Character.id %}" class="btn btn-primary mt-3">Edit Character</a> <!--Allow the author to update their character-->
+            <a href="{% url 'CharacterUpdate' Character.id %}" class="btn btn-primary mt-3 color-button-Submit">Edit Character</a> <!--Allow the author to update their character-->
             {% endif %}
         </div>
     </div>
