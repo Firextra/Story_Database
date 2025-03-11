@@ -10,9 +10,11 @@ def index(request):
        CharacterDataBase=CharacterDatabase.objects.all()       #create instance 
        TaleDatabase=TalesDatabase.objects.all()
        ChapterDatabase=ChaptersDatabase.objects.all()
+
        Character = random.choice(CharacterDataBase)
        Tale = random.choice(TaleDatabase)
        Chapter = random.choice(ChapterDatabase)
+
        context={'Character':Character, 'Tale':Tale, 'Chapter':Chapter}
        return render(request, "index.html", context)
 
@@ -25,6 +27,7 @@ def UniverseArticles(request):
 def TalesAndChapters(request):
        return render(request, "TalesAndChapters.html")
 
+@login_required
 def ProfilePage(request):
        return render(request, "ProfilePage.html")
 

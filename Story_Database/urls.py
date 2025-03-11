@@ -23,4 +23,5 @@ urlpatterns = [ #links to the pages
     path('ChapterPage/<int:ChapterID>/', views.ChapterPage, name="ChapterPage"), #<int:ChapterID> has the ID for the page
     path('TalesAndChapters/CreateChapter/', views.CreateChapter, name="CreateChapter"),
     path('Chapters/<int:ChapterID>/Update/', views.ChapterUpdate, name="ChapterUpdate"),
+    path('register/', views.register, name='register')
 ]
