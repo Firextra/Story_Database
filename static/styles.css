@@ -1,39 +1,39 @@
-.CSSNavBar{
+.CSSNavBar{     /*Apply background bar to Navbar*/
     background-color: #70003B;
 
 }
 
-.CSSNavBar .navbar-brand, .CSSNavBar .nav-link {
+.CSSNavBar .navbar-brand, .CSSNavBar .nav-link {  /*apply text colour for navbar and the links*/
     color: #F0F3F3;
 }
 
-.CSSNavBar .nav-link:hover{
+.CSSNavBar .nav-link:hover{     /*Slightly different colour on hover*/
     color: #e1e6e6;
 }
 
-.jumbotron{
+.jumbotron{  /*Mainbackground with white text*/
     background-color: #301B27;
     color: #F0F3F3;
 }
 
-.navbar-nav{
+.navbar-nav{  /*make the navbar neater*/
     display: flex;
     width: 100%;
 }
 
 
-.color-button-Submit{
+.color-button-Submit{  /*submit buttons are this colour*/
     background-color: #c34d5f;
 }
 
-.color-button-Submit:hover{
+.color-button-Submit:hover{ /*submit buttons are this colour on hover*/
     background-color: #863340;
 }
 
-.color-button-Cancel{
+.color-button-Cancel{ /*cancel buttons are this colour*/
     background-color: #301B27;
 }
 
-.color-button-Cancel:hover{
+.color-button-Cancel:hover{ /*cancel buttons are this colour on hover*/
     background-color: #24141d;
 }
